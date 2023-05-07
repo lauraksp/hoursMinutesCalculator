@@ -12,11 +12,11 @@ type Time struct {
 }
 
 func main() {
-	// Solicitar a primeira hora ao usuário
+	// Solicitar a primeira hora do usuário
 	fmt.Println("Digite a primeira hora (no formato HH:MM):")
 	hora1 := readTimeInput()
 
-	// Solicitar a segunda hora ao usuário
+	// Solicitar a segunda hora do usuário
 	fmt.Println("Digite a segunda hora (no formato HH:MM):")
 	hora2 := readTimeInput()
 
