@@ -12,6 +12,7 @@ type Time struct {
 }
 
 func main() {
+
 	// Solicitar a primeira hora do usuário
 	fmt.Println("Digite a primeira hora (no formato HH:MM):")
 	hora1 := readTimeInput()
@@ -20,11 +21,23 @@ func main() {
 	fmt.Println("Digite a segunda hora (no formato HH:MM):")
 	hora2 := readTimeInput()
 
-	// Somar as horas e minutos
-	resultado := sumTimes(hora1, hora2)
+	//Solicitar a operação de soma ou subtração
+	fmt.Println("Deseja somar ou subtrair as horas? (soma/subtracao):")
+	operacao := readOperationInput()
+
+	// Calcular o resultado com base na operação escolhida
+	var resultado Time
+	if operacao == "soma" {
+		resultado = sumTimes(hora1, hora2)
+	} else if operacao == "subtracao" {
+		resultado = subtractTimes(hora1, hora2)
+	} else {
+		fmt.Println("Operação invalida.")
+		return
+	}
 
 	// Imprimir o resultado em horas e minutos
-	fmt.Printf("A soma das horas é: %02d:%02d\n", resultado.Hours, resultado.Minutes)
+	fmt.Printf("O resultado da operacao : %02d:%02d\n", resultado.Hours, resultado.Minutes)
 }
 
 func readTimeInput() Time {
@@ -36,8 +49,21 @@ func readTimeInput() Time {
 	return Time{Hours: horas, Minutes: minutos}
 }
 
+func readOperationInput() string {
+	var operacao string
+	fmt.Scanln(&operacao)
+	return strings.ToLower(operacao)
+}
+
 func sumTimes(hora1, hora2 Time) Time {
 	totalMinutos := (hora1.Hours*60 + hora1.Minutes) + (hora2.Hours*60 + hora2.Minutes)
+	horas := totalMinutos / 60
+	minutos := totalMinutos % 60
+	return Time{Hours: horas, Minutes: minutos}
+}
+
+func subtractTimes(hora1, hora2 Time) Time {
+	totalMinutos := (hora1.Hours*60 + hora1.Minutes) - (hora2.Hours*60 + hora2.Minutes)
 	horas := totalMinutos / 60
 	minutos := totalMinutos % 60
 	return Time{Hours: horas, Minutes: minutos}
