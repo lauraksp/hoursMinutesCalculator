@@ -26,8 +26,10 @@
 5. Digite a segunda hora (no formato HH:MM):
 
   - 03:45
+
+6. Informe o tipo de operacao: soma ou subtracao
   
-6. Resultado:
+7. Resultado:
 
 * A soma das horas é: 14:15
 * A subtração das horas é: 06:45
